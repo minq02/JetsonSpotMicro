@@ -1,0 +1,39 @@
+<launch>
+
+<!-- launch rosserial for joystick -->
+<!-- 
+<node pkg="rosserial_python" name="serial_node" type="serial_node.py" >
+    <param name="port" value="/dev/ttyACM0"/>
+</node> -->
+   
+<!-- launch keyboard input node -->
+<node pkg="spotmicroai" name="keyboard" type="keyboard.py"/>
+
+<!-- launch legs nodes -->
+<node pkg="spotmicroai" name="Leg1" type="Leg.py" output="screen" args="_name:=Leg_1 _number:=0"/>
+<node pkg="spotmicroai" name="Leg2" type="Leg.py" output="screen" args="_name:=Leg_4 _number:=1"/>
+<node pkg="spotmicroai" name="Leg3" type="Leg.py" output="screen" args="_name:=Leg_2 _number:=2"/>
+<node pkg="spotmicroai" name="Leg4" type="Leg.py" output="screen" args="_name:=Leg_3 _number:=3"/>
+
+<!-- launch servo nodes -->
+<node pkg="spotmicroai" name="Servo3" type="ServoControl.py" output="screen" args="_LegName:=Leg_1 _ServoNumber:=2 _ServoName:=front_right_foot"/>
+<node pkg="spotmicroai" name="Servo2" type="ServoControl.py" output="screen" args="_LegName:=Leg_1 _ServoNumber:=1 _ServoName:=front_right_leg"/>
+<node pkg="spotmicroai" name="Servo1" type="ServoControl.py" output="screen" args="_LegName:=Leg_1 _ServoNumber:=0 _ServoName:=front_right_shoulder"/>
+
+<node pkg="spotmicroai" name="Servo6" type="ServoControl.py" output="screen" args="_LegName:=Leg_2 _ServoNumber:=2 _ServoName:=rear_right_foot"/>
+<node pkg="spotmicroai" name="Servo5" type="ServoControl.py" output="screen" args="_LegName:=Leg_2 _ServoNumber:=1 _ServoName:=rear_right_leg"/>
+<node pkg="spotmicroai" name="Servo4" type="ServoControl.py" output="screen" args="_LegName:=Leg_2 _ServoNumber:=0 _ServoName:=rear_right_shoulder"/>
+
+<node pkg="spotmicroai" name="Servo9" type="ServoControl.py" output="screen" args="_LegName:=Leg_3 _ServoNumber:=2 _ServoName:=rear_left_foot"/>
+<node pkg="spotmicroai" name="Servo8" type="ServoControl.py" output="screen" args="_LegName:=Leg_3 _ServoNumber:=1 _ServoName:=rear_left_leg"/>
+<node pkg="spotmicroai" name="Servo7" type="ServoControl.py" output="screen" args="_LegName:=Leg_3 _ServoNumber:=0 _ServoName:=rear_left_shoulder"/>
+
+<node pkg="spotmicroai" name="Servo12" type="ServoControl.py" output="screen" args="_LegName:=Leg_4 _ServoNumber:=2 _ServoName:=front_left_foot"/>
+<node pkg="spotmicroai" name="Servo11" type="ServoControl.py" output="screen" args="_LegName:=Leg_4 _ServoNumber:=1 _ServoName:=front_left_leg"/>
+<node pkg="spotmicroai" name="Servo10" type="ServoControl.py" output="screen" args="_LegName:=Leg_4 _ServoNumber:=0 _ServoName:=front_left_shoulder"/>
+
+
+<!-- launch movement node-->
+<node pkg="spotmicroai" name="Movement" type="Sit.py" output="screen"/>
+
+</launch>
